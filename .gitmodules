@@ -1,0 +1,9 @@
+[submodule "Project Files/Angular Banking Website"]
+	path = Project Files/Angular Banking Website
+	url = https://github.com/mssevov18/Angular-Banking-Website
+[submodule "Project Files/WPF Bank Server Application"]
+	path = Project Files/WPF Bank Server Application
+	url = https://github.com/mssevov18/WPF-Bank-Server-Application
+[submodule "Project Files/WPF Bank Teller Application"]
+	path = Project Files/WPF Bank Teller Application
+	url = https://github.com/mssevov18/WPF-Bank-Teller-Application

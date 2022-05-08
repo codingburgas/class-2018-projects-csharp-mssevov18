@@ -1,0 +1,85 @@
+@startuml
+skinparam linetype ortho
+
+entity Bank {
+* bank_id: int -> Primary Key
+* name: nvarchar(50)
+}
+
+entity Branch {
+* branch_id: int -> Primary Key
+* bank_id: int -> Foreign Key(to Bank)
+* address: text
+}
+
+entity Account {
+* account_id: int -> Primary Key
+* person_egn: varchar(10) -> Foreign Key(to Person)
+* savings: money
+* bank_id: int -> Foreign Key(to Bank)
+}
+
+entity Person {
+* egn: varchar(10) -> Primary Key
+* first_name: nvarchar(50)
+* middle_name: nvarchar(50)
+* last_name: nvarchar(50)
+* age: int
+* residence: text
+}
+
+entity Card {
+* card_id: int -> Primary Key
+* holder_id: int -> Foreign Key(to Account)
+* card_num: varchar(16)
+* security_num: varchar(3)
+* holder_name: varchar(40)
+* pin: varchar(10)
+}
+
+entity Transaction {
+* transaction_id: int -> Primary Key
+* amount: int
+}
+
+entity TransactionAccountConnection {
+* transaction_id: int -> Foreign Key(to Transaction)
+* account_sender_id: int -> Foreign Key(to Account)
+* account_reciever_id: int -> Foreign Key(to Account)
+}
+
+entity Bank_Teller {
+* bank_id: int -> Foreign Key(to Bank)
+* username: nvarchar(20) -> Primary Key
+* password: nvarchar(20)
+* person_egn: varchar(10) -> Foreign Key(to Person)
+}
+
+entity Administrator {
+* bank_id: int -> Foreign Key(to Bank)
+* username: nvarchar(20) -> Primary Key
+* password: nvarchar(20)
+* person_egn: varchar(10) -> Foreign Key(to Person)
+}
+
+entity Card_Reader{
+* reader_id: int -> Primary Key
+* bank_id: int -> Foreign Key(to Bank)
+* account_reciever: int -> Foreign Key(to Account)
+}
+
+Bank ||--o{ Branch
+Person ||--|| Account
+Person ||--|| Administrator
+Person ||--|| Bank_Teller
+Account ||--o{ Card
+Administrator }|--|| Branch
+Bank_Teller }|--|| Branch
+Bank ||--o{ Account
+Card_Reader }o--|| Bank
+Card_Reader ||--|| Account
+
+Transaction }o--|| TransactionAccountConnection
+Account }o--|| TransactionAccountConnection
+
+@enduml

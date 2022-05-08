@@ -1,0 +1,105 @@
+@startuml
+left to right direction
+
+package Users {
+actor User as u
+actor Shop_Owner as so
+actor Cashier as c
+}
+
+package Bank_Actors {
+actor Bank_Teller as bt
+actor Administrator as a
+actor Bank_Database as bdb
+}
+
+rectangle System {
+
+package Teller_App {
+usecase "create account TA_UC1" as TA_UC1
+usecase "authenticate card reader TA_UC3" as TA_UC3
+usecase "alter account TA_UC4" as TA_UC4
+usecase "get data report TA_UC5" as TA_UC5 
+}
+
+package Website {
+usecase "log in W_UC1" as W_UC1
+usecase "send money W_UC2" as W_UC2
+usecase "monitor balance W_UC3" as W_UC3
+}
+
+package Bank_Administration_App {
+usecase "monitor server status BAA_UC1" as BAA_UC1
+usecase "process request BAA_UC2" as BAA_UC2
+}
+
+package Card_Reader {
+usecase "initial setup CR_UC1" as CR_UC1
+usecase "make payment CR_UC2" as CR_UC2
+}
+
+package Errors {
+usecase "invalid number / data E1" as E1
+usecase "insufficient amount E2" as E2
+usecase "account not found E3" as E3
+}
+
+}
+
+W_UC2 <|.. E1 #blue: <<extends>>
+CR_UC2 <|.. E1 #blue: <<extends>>
+
+CR_UC2 <|.. E3 #green: <<extends>> 
+W_UC1 <|.. E3 #green: <<extends>>
+W_UC2 <|.. E3 #green: <<extends>>
+TA_UC1 <|.. E3 #green: <<extends>>
+TA_UC3 <|.. E3 #green: <<extends>>
+TA_UC4 <|.. E3 #green: <<extends>>
+TA_UC5 <|.. E3 #green: <<extends>>
+BAA_UC2 <|.. E3 #green: <<extends>>
+
+so => CR_UC1
+
+c => CR_UC2
+
+u =r=> CR_UC2
+u =r=> W_UC1
+u => W_UC2
+u => W_UC3
+
+a => BAA_UC1
+
+bt => TA_UC3
+bt => TA_UC1
+bt => TA_UC4
+bt => TA_UC5
+
+bdb *.. BAA_UC1 #line.dotted : <<include>>
+bdb *.. BAA_UC2 #line.dotted : <<include>>
+bdb *.. TA_UC5 #line.dotted : <<include>>
+bdb *.. W_UC1 #line.dotted : <<include>>
+bdb *.. W_UC3 #line.dotted : <<include>>
+
+CR_UC1 ..* TA_UC3 #line.dotted : <<include>>
+CR_UC2 ..* BAA_UC2 #line.dotted : <<include>>
+
+W_UC2 ..* BAA_UC2 #line.dotted : <<include>>
+
+TA_UC1 ..* BAA_UC2 #line.dotted : <<include>>
+TA_UC3 ..* BAA_UC2 #line.dotted : <<include>>
+TA_UC4 ..* BAA_UC2 #line.dotted : <<include>>
+
+package Legend {
+actor Actor
+usecase Usecase1
+usecase Usecase2
+usecase Usecase3
+
+Actor => Usecase1 #text:red : Actor to Usecase
+Usecase1 .|> Usecase2 #text:red : extends
+Usecase3 .u.* Usecase2 #text:red : include
+}
+
+
+
+@enduml
