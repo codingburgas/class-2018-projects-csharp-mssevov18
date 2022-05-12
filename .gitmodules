@@ -7,3 +7,6 @@
 [submodule "Project Files/WPF Bank Teller Application"]
 	path = Project Files/WPF Bank Teller Application
 	url = https://github.com/mssevov18/WPF-Bank-Teller-Application
+[submodule ".\\Project Files\\WPF And POS Terminal Application"]
+	path = .\\Project Files\\WPF And POS Terminal Application
+	url = https://github.com/mssevov18/WPF-And-POS-Terminal-Application-
