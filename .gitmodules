@@ -10,3 +10,6 @@
 [submodule ".\\Project Files\\WPF And POS Terminal Application"]
 	path = .\\Project Files\\WPF And POS Terminal Application
 	url = https://github.com/mssevov18/WPF-And-POS-Terminal-Application-
+[submodule ".\\Project Files\\Bank Db Class Library"]
+	path = .\\Project Files\\Bank Db Class Library
+	url = https://github.com/mssevov18/Bank-Db-Class-Library
