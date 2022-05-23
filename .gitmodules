@@ -1,15 +1,23 @@
 [submodule "Project Files/Angular Banking Website"]
 	path = Project Files/Angular Banking Website
 	url = https://github.com/mssevov18/Angular-Banking-Website
+        branch = master
 [submodule "Project Files/WPF Bank Server Application"]
 	path = Project Files/WPF Bank Server Application
 	url = https://github.com/mssevov18/WPF-Bank-Server-Application
+        branch = master
 [submodule "Project Files/WPF Bank Teller Application"]
 	path = Project Files/WPF Bank Teller Application
 	url = https://github.com/mssevov18/WPF-Bank-Teller-Application
+        branch = master
 [submodule ".\\Project Files\\WPF And POS Terminal Application"]
 	path = .\\Project Files\\WPF And POS Terminal Application
-	url = https://github.com/mssevov18/WPF-And-POS-Terminal-Application-
+	url = https://github.com/mssevov18/WPF-And-POS-Terminal-Application
+        branch = master
 [submodule ".\\Project Files\\Bank Db Class Library"]
 	path = .\\Project Files\\Bank Db Class Library
 	url = https://github.com/mssevov18/Bank-Db-Class-Library
+[submodule "Project Files/Bank Db Class Library"]
+	path = Project Files/Bank Db Class Library
+	url = https://github.com/mssevov18/Bank-Db-Class-Library
+	branch = master
